@@ -1,0 +1,45 @@
+#You can now create the Star and Planet tables that we've been querying throughout these activities and fill the tables using the two CSV files which contain the star and planet data.
+#The tables and CSV files is to contain the columns as follows:
+
+    stars.csv:
+        kepler_id as an integer and primary key;
+        t_eff as an integer;
+        radius as a float.
+    planets.csv:
+        kepler_id as an integer and a foreign key referencing Star on kepler_id;
+        koi_name as a variable char (max 20) and primary key;
+        kepler_name as a variable char (max 20);
+        status as a variable char (max 20);
+        period as a float;
+        radius as a float;
+        t_eq as an integer.
+
+#Add the following other constraints to your tables:
+
+    #Ensure t_eff and radius in Star cannot be NULL
+    #Ensure the status in Planet cannot be NULL
+
+
+
+
+CREATE TABLE Star (
+  kepler_id INTEGER PRIMARY KEY,
+  t_eff INTEGER NOT NULL,
+  radius FLOAT NOT NULL
+);
+
+CREATE TABLE Planet (
+  kepler_id INTEGER REFERENCES Star (kepler_id),     #foreign key referencing 'Star' on 'kepler_id'
+  koi_name VARCHAR(20) PRIMARY KEY,
+  kepler_name VARCHAR(20),
+  status VARCHAR(20) NOT NULL,
+  period FLOAT,
+  radius FLOAT,
+  t_eq INTEGER
+);
+
+COPY Star (kepler_id, t_eff, radius)                 #COPY <table name> (variable) FROM 'file_name' CSV; (syntax to copy data from a text file)
+FROM 'stars.csv' CSV;
+
+COPY Planet (kepler_id, koi_name, kepler_name, status, period, radius, t_eq)
+FROM 'planets.csv' CSV;

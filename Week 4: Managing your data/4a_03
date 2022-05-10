@@ -1,0 +1,34 @@
+#Now you've ready to create your first table. Your task is to set up a new Planet table and fill it with the planets listed below.
+#Your table should consist of the following attributes in this order:
+
+   kepler_id, as type INTEGER
+   koi_name, as type VARCHAR(15) #'VARCHAR' = variable character
+   kepler_name, as type VARCHAR(15)
+   status, as type VARCHAR(20)
+   radius, as type FLOAT
+
+#Add the following constraints:
+
+   #make all attributes NOT NULL except kepler_name;
+   #make the koi_name a unique attribute.
+
+#Finally, insert the following planets into your new table:
+kepler_id 	koi_name 	kepler_name 	status 	radius
+6862328 	K00865.01 		CANDIDATE 	119.021
+10187017 	K00082.05 	Kepler-102 b 	CONFIRMED 	5.286
+10187017 	K00082.04 	Kepler-102 c 	CONFIRMED 	7.071
+
+
+
+
+
+CREATE TABLE Planet (
+  kepler_id INTEGER NOT NULL,
+  koi_name VARCHAR(15) NOT NULL UNIQUE,
+  kepler_name VARCHAR(15),
+  status VARCHAR(20) NOT NULL,
+  radius FLOAT NOT NULL
+);
+
+INSERT INTO Planet (kepler_id, koi_name, kepler_name, status, radius) VALUES (6862328, 'K00865.01', NULL, 'CANDIDATE', 119.021),  #variable chracters are inserted as strings are
+(10187017, 'K00082.05', 'Kepler-102 b', 'CONFIRMED', 5.286), (10187017, 'K00082.04', 'Kepler-102 c', 'CONFIRMED', 7.071);

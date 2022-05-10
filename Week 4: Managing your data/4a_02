@@ -1,0 +1,16 @@
+#Your task is to fix a Planet table has been corrupted.
+#There are two problems: some of the rows were copied with a negative radius and the unconfirmed planets were given fake Kepler names. To fix this, you'll have to:
+
+    #Update the Kepler names of planets which don't have a confirmed status (replace the kepler_name with NULL); #1
+    #Delete rows where the radius is negative. #2
+
+
+
+#1
+UPDATE Planet                #'UPDATE' <table name>
+SET kepler_name = NULL       #'SET' <desired change to the variable>
+WHERE status != 'CONFIRMED'; #condition for updating variable; '!=' symbolizes 'L.H.S not equal to R.H.S'
+
+#2
+DELETE FROM Planet           #'DELETE FROM' <table name> WHERE <constraint>;
+WHERE radius < 0;            #condition for deletion of variable

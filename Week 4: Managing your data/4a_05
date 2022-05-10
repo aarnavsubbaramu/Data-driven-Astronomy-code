@@ -1,0 +1,14 @@
+#Your task is to add two columns to the existing Star table to hold the equatorial coordinates as RA and declination angles and then fill the new columns with data. Call the attributes ra and decl.
+#The new stars data, including the equatorial coordinates is stored in stars_full.csv. The attributes in this file are ordered as follows:
+(kepler_id, t_eff, radius, ra, decl)
+
+
+
+ALTER TABLE Star                               #ALTER TABLE <file_name> ADD/DROP Column <column_name> <variable type>;
+ ADD COLUMN ra FLOAT,
+ ADD COLUMN decl FLOAT;
+
+DELETE FROM Star *;                            #delete all columns of the inital 'Star' table
+
+COPY Star (kepler_id, t_eff, radius, ra, decl) #copying data from 'stars_full.csv' to the 'Star' table
+FROM 'stars_full.csv' CSV;
