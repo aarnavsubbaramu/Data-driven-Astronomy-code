@@ -1,0 +1,11 @@
+#As a warm-up, add the following stars to the existing Star table:
+kepler_id 	t_eff 	radius
+7115384 	3789 	27.384
+8106973 	5810 	0.811
+9391817 	6200 	0.958
+
+#Have a look at the table before and after the insertion to make sure everything went fine. The automarker runs a SELECT * FROM Star query to check the result.
+
+
+
+INSERT INTO Star (kepler_id, t_eff, radius) VALUES (7115384, 3789, 27.384), (8106973, 5810, 0.811), (9391817, 6200, 0.958); #inserting multiple tuples at once works as well
